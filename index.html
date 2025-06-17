@@ -84,13 +84,15 @@ cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/zunxbt/gensyn-
   </div>
   <h2 style="margin-top: 50px; color: #00ffaa; text-align: center;">LOCAL TUNNEL লগইন করার জন্য তোমার VPS-এ নিচের কমান্ডগুলো চালাও</h2>
 
-  <div class="command" onclick="copyText(this)">sudo apt install ufw -y</div>
-  <div class="command" onclick="copyText(this)">sudo ufw allow 22</div>
-  <div class="command" onclick="copyText(this)">sudo ufw allow 3000/tcp</div>
-  <div class="command" onclick="copyText(this)">sudo ufw enable</div>
-  <div class="command" onclick="copyText(this)">wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb</div>
-  <div class="command" onclick="copyText(this)">sudo dpkg -i cloudflared-linux-amd64.deb</div>
-  <div class="command" onclick="copyText(this)">cloudflared tunnel --url http://localhost:3000
+<div class="command" onclick="copyText(this)">sudo apt install ufw -y</div>
+<div class="command" onclick="copyText(this)">sudo ufw allow 22</div>
+<div class="command" onclick="copyText(this)">sudo ufw allow 3000/tcp</div>
+<div class="command" onclick="copyText(this)">sudo ufw enable</div>
+<div class="command" onclick="copyText(this)">wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb</div>
+<div class="command" onclick="copyText(this)">sudo dpkg -i cloudflared-linux-amd64.deb</div>
+<div class="command" onclick="copyText(this)">cloudflared tunnel login</div>
+<div class="command" onclick="copyText(this)">cloudflared tunnel --url http://localhost:3000</div>
+
     
   <div class="c  <h2 style="margin-top: 60px; color: #00ffaa; text-align: center;">
     🔧 যদি Gensyn-এ কোনো terminate issue আসে তাহলে এই গাইড অনুসরণ করো
