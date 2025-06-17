@@ -1,67 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Click to Copy Commands</title>
+  <meta charset="UTF-8" />
+  <title>GENSYN Noderun by Bro Prodip</title>
   <style>
     body {
-      background: #f4f4f4;
-      font-family: sans-serif;
+      background-color: #111;
+      font-family: monospace;
+      color: #eee;
       padding: 30px;
     }
-    .command {
-      background: #1e1e1e;
-      color: #00ffae;
-      font-family: monospace;
-      padding: 12px;
-      margin-bottom: 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      user-select: none;
-      white-space: pre-wrap;
+
+    h1, h2 {
+      color: #00ffaa;
+      text-align: center;
     }
+
     .copied {
       display: none;
-      color: green;
+      text-align: center;
+      color: #0f0;
+      margin-bottom: 20px;
       font-weight: bold;
-      margin-bottom: 15px;
+    }
+
+    .command {
+      background: #222;
+      color: #0ff;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      white-space: pre-wrap;
+    }
+
+    .command:hover {
+      background: #333;
+    }
+
+    .command.clicked {
+      background: #004d00;
+      color: #fff;
     }
   </style>
 </head>
 <body>
 
-  <h2>📋 Click any command to copy</h2>
+  <h1>ALL NODERUN BY BRO PRODIP 🐾</h1>
+  <h2>GENSYN NODERUN ALL COMMAND</h2>
 
   <div class="copied" id="copiedMsg">✅ Copied!</div>
 
-  <div class="command" onclick="copy(this)">sudo apt install tmux</div>
-
-  <div class="command" onclick="copy(this)">sudo apt update && sudo apt install -y sudo</div>
-
-  <div class="command" onclick="copy(this)">
+  <div class="command" onclick="copyText(this)">sudo apt install tmux</div>
+  <div class="command" onclick="copyText(this)">sudo apt update && sudo apt install -y sudo</div>
+  <div class="command" onclick="copyText(this)">
 sudo apt update && sudo apt install -y python3 python3-venv python3-pip curl wget screen git lsof && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && sudo apt update && sudo apt install -y yarn
   </div>
-
-  <div class="command" onclick="copy(this)">curl -sSL https://raw.githubusercontent.com/ABHIEBA/Gensyn/main/node.sh | bash</div>
-
-  <div class="command" onclick="copy(this)">tmux new-session -s GEN</div>
-
-  <div class="command" onclick="copy(this)">
+  <div class="command" onclick="copyText(this)">curl -sSL https://raw.githubusercontent.com/ABHIEBA/Gensyn/main/node.sh | bash</div>
+  <div class="command" onclick="copyText(this)">tmux new-session -s GEN</div>
+  <div class="command" onclick="copyText(this)">
 cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/zunxbt/gensyn-testnet.git && chmod +x gensyn-testnet/gensyn.sh && ./gensyn-testnet/gensyn.sh
   </div>
 
   <script>
-    function copy(element) {
-      const text = element.textContent;
+    function copyText(element) {
+      const text = element.innerText;
       navigator.clipboard.writeText(text).then(() => {
+        document.querySelectorAll('.command').forEach(el => el.classList.remove('clicked'));
+        element.classList.add('clicked');
         const msg = document.getElementById("copiedMsg");
         msg.style.display = "block";
-        setTimeout(() => {
-          msg.style.display = "none";
-        }, 1500);
+        setTimeout(() => { msg.style.display = "none"; }, 1200);
       });
     }
   </script>
 
 </body>
 </html>
+  <div style="margin-top: 40px; padding: 20px; background-color: #1a1a1a; color: #ffd700; border-radius: 10px; font-size: 1.1em;">
+    🟡 এখন <strong>CTRL + C</strong> চাপুন, তারপর নিচের কমান্ডটি আবার দিন (copy করেও দিতে পারেন):<br><br>
+    <code style="color: #0ff;">cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/zunxbt/gensyn-testnet.git && chmod +x gensyn-testnet/gensyn.sh && ./gensyn-testnet/gensyn.sh</code>
+  </div>
+  <h2 style="margin-top: 50px; color: #00ffaa; text-align: center;">LOCAL TUNNEL লগইন করার জন্য তোমার VPS-এ নিচের কমান্ডগুলো চালাও</h2>
+
+  <div class="command" onclick="copyText(this)">sudo apt install ufw -y</div>
+  <div class="command" onclick="copyText(this)">sudo ufw allow 22</div>
+  <div class="command" onclick="copyText(this)">sudo ufw allow 3000/tcp</div>
+  <div class="command" onclick="copyText(this)">sudo ufw enable</div>
+  <div class="command" onclick="copyText(this)">wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb</div>
+  <div class="command" onclick="copyText(this)">sudo dpkg -i cloudflared-linux-amd64.deb</div>
+  <div class="c  <h2 style="margin-top: 60px; color: #00ffaa; text-align: center;">
+    🔧 যদি Gensyn-এ কোনো terminate issue আসে তাহলে এই গাইড অনুসরণ করো
+  </h2>
+
+  <p style="color: #ccc; text-align: center; margin-top: 10px;">
+    নিচের নির্দেশনা ধাপে ধাপে অনুসরণ করো, CTRL+C দিয়ে আগের প্রসেস বন্ধ করে এই কমান্ডগুলো চালাও:
+  </p>
+
+  <div class="command" onclick="copyText(this)">cd rl-swarm</div>
+  <div class="command" onclick="copyText(this)">sudo apt install nano</div>
+  <div class="command" onclick="copyText(this)">nano hivemind_exp/configs/mac/grpo-qwen-2.5-0.5b-deepseek-r1.yaml</div>
+
+  <div style="background: #222; color: #ffd700; padding: 15px; margin: 15px 0; border-radius: 10px;">
+    <strong>nano editor-এ নিচের ফাইল সেটিং গুলো ঠিক করে দাও:</strong><br><br>
+    torch_dtype: float32<br>
+    bf16: false<br>
+    gradient_checkpointing: false<br>
+    per_device_train_batch_size: 1<br><br>
+    <strong>তারপর:</strong> Ctrl+X → Y → Enter দিয়ে সেভ করে বের হয়ে আসো।
+  </div>
+
+  <div class="command" onclick="copyText(this)">python3 -m venv .venv</div>
+  <div class="command" onclick="copyText(this)">source .venv/bin/activate</div>
+  <div class="command" onclick="copyText(this)">./run_rl_swarm.sh</div>
+ommand" onclick="copyText(this)">cloudflared tunnel --url http://localhost:3000</div>
