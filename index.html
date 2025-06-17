@@ -191,3 +191,38 @@ ommand" onclick="copyText(this)">cloudflared tunnel --url http://localhost:3000<
 
 
 
+
+
+
+
+<div style="margin-top: 30px; text-align: center; color: #aaa;">
+  <p>OG LABS ব্লক চেক করার কমান্ড (বাস্তব সময়ে চলবে, ৫ সেকেন্ড অন্তর আপডেট):</p>
+  <div class="command" onclick="copyText(this)">
+    while true; do<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;response=$(curl -s -X POST http://localhost:5678 -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","method":"zgs_getStatus","params":[],"id":1}');<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;logSyncHeight=$(echo $response | jq '.result.logSyncHeight');<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;connectedPeers=$(echo $response | jq '.result.connectedPeers');<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;echo -e "logSyncHeight: \033[32m$logSyncHeight\033[0m, connectedPeers: \033[34m$connectedPeers\033[0m";<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;sleep 5;<br>
+    done
+  </div>
+</div>
+
+
+
+<div style="margin-top: 30px; text-align: center; color: #aaa;">
+  <p>AZTEC Peer ID চেক করার কমান্ড:</p>
+  <div class="command" onclick="copyText(this)">
+    sudo docker logs $(docker ps -q --filter ancestor=aztecprotocol/aztec:latest | head -n 1) 2>&1 | grep -i "peerId" | grep -o '"peerId":"[^"]*"' | cut -d'"' -f4 | head -n 1
+  </div>
+</div>
+
+
+<div style="margin-top: 30px; text-align: center; color: #aaa;">
+  <p>tmux সেশন পুনরায় যুক্ত হওয়ার কমান্ডগুলো:</p>
+  <div class="command" onclick="copyText(this)">tmux attach-session -t GEN</div>
+  <div class="command" onclick="copyText(this)">tmux attach-session -t AZ</div>
+</div>
+
+
+
