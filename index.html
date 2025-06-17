@@ -119,3 +119,58 @@ cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/zunxbt/gensyn-
   <div class="command" onclick="copyText(this)">source .venv/bin/activate</div>
   <div class="command" onclick="copyText(this)">./run_rl_swarm.sh</div>
 ommand" onclick="copyText(this)">cloudflared tunnel --url http://localhost:3000</div>
+
+<h2 style="margin-top: 60px; color: #00ffaa; text-align: center;">2ND PROJECT — AZTEC NODERUN ALL COMMAND</h2>
+<p style="text-align: center; color: #ccc; margin-top: 10px;">
+  নিচের কমান্ডগুলো একে একে চালাও — Click করলে Copy হয়ে যাবে 🧠
+</p>
+
+<div class="command" onclick="copyText(this)">sudo apt-get update && sudo apt-get upgrade -y</div>
+
+<div class="command" onclick="copyText(this)">curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt update && sudo apt install -y nodejs</div>
+
+<div class="command" onclick="copyText(this)">sudo apt install curl iptables build-essential git wget lz4 jq make gcc nano automake autoconf tmux htop nvme-cli libgbm1 pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev screen ufw -y</div>
+
+<div class="command" onclick="copyText(this)">sudo apt update && sudo apt install -y apt-transport-https ca-certificates curl software-properties-common</div>
+
+<div class="command" onclick="copyText(this)">sudo curl -L "https://github.com/docker/compose/releases/download/$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose</div>
+
+<div class="command" onclick="copyText(this)">docker --version && docker-compose --version</div>
+
+<div class="command" onclick="copyText(this)">bash -i &lt;(curl -s https://install.aztec.network)</div>
+
+<div class="command" onclick="copyText(this)">echo 'export PATH="$HOME/.aztec/bin:$PATH"' >> ~/.bashrc</div>
+
+<div class="command" onclick="copyText(this)">source ~/.bashrc</div>
+
+<div class="command" onclick="copyText(this)">aztec-up latest</div>
+
+<div class="command" onclick="copyText(this)">sudo ufw allow 22</div>
+
+<div class="command" onclick="copyText(this)">sudo ufw allow ssh</div>
+
+<div class="command" onclick="copyText(this)">sudo ufw enable</div>
+
+<div class="command" onclick="copyText(this)">sudo ufw allow 40400</div>
+
+<div class="command" onclick="copyText(this)">sudo ufw allow 8080</div>
+
+<p style="text-align: center; color: #aaa; margin-top: 20px;">
+  🧠 একটি নতুন সেশান তৈরি করতে নিচের কমান্ডটি চালান:
+</p>
+
+<div class="command" onclick="copyText(this)">tmux new-session -s AZ</div>
+
+
+<p style="text-align: center; color: #aaa; margin-top: 30px;">
+  🧱 এখন আপনার মালমসলা সাজান এই কমান্ড দিয়ে — শুধু নিচের মানগুলো ঠিক মতো বসিয়ে দিন:
+</p>
+
+<div class="command" onclick="copyText(this)">aztec start --node --archiver --sequencer \<br>
+  &nbsp;&nbsp;--network alpha-testnet \<br>
+  &nbsp;&nbsp;--l1-rpc-urls Eth_Sepolia_RPC \<br>
+  &nbsp;&nbsp;--l1-consensus-host-urls Eth-beacon_sepolia_RPC \<br>
+  &nbsp;&nbsp;--sequencer.validatorPrivateKey 0xYourPrivateKey \<br>
+  &nbsp;&nbsp;--sequencer.coinbase YourAddress \<br>
+  &nbsp;&nbsp;--p2p.p2pIp Your_ip</div>
+
