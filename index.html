@@ -221,9 +221,20 @@ ommand" onclick="copyText(this)">cloudflared tunnel --url http://localhost:3000<
 <div style="margin-top: 30px; text-align: center; color: #aaa;">
   <p>AZTEC Peer ID চেক করার কমান্ড:</p>
   <div class="command" onclick="copyText(this)">
-    sudo docker logs $(docker ps -q --filter ancestor=aztecprotocol/aztec:latest | head -n 1) 2>&1 | grep -i "peerId" | grep -o '"peerId":"[^"]*"' | cut -d'"' -f4 | head -n 1
+    while true; do     response=$(curl -s -X POST http://localhost:5678 -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","method":"zgs_getStatus","params":[],"id":1}');     logSyncHeight=$(echo $response | jq '.result.logSyncHeight');     connectedPeers=$(echo $response | jq '.result.connectedPeers');     echo -e "logSyncHeight: \033[32m$logSyncHeight\033[0m, connectedPeers: \033[34m$connectedPeers\033[0m";     sleep 5; done
   </div>
 </div>
+
+
+
+<p>AZTEC Block Check চেক করার LINK:</p>
+  <div class="command" onclick="copyText(this)">
+    https://chainscan-galileo.bangcode.id/address/0x7f28B37b057f75CfCD0Bc37Cd1aa52Cff23ef5cd
+    </div>
+</div>
+    
+
+
 
 
 <div style="margin-top: 30px; text-align: center; color: #aaa;">
