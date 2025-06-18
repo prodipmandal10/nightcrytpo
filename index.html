@@ -462,6 +462,45 @@ ommand" onclick="copyText(this)">cloudflared tunnel --url http://localhost:3000<
 
 
 
+<h2>🛠️ AZTEC CRASH SOLUTION</h2>
+
+<h3>📌 ধাপে ধাপে করণীয়:</h3>
+
+<div class="command" onclick="copy(this)">➤ প্রথমে CTRL + C চাপুন (আগের process বন্ধ করার জন্য)</div>
+
+<div class="command" onclick="copy(this)">➤ তারপর নিচের command দিয়ে নতুন ফাইল খুলুন: nano restart-aztec.sh</div>
+
+<div class="command" onclick="copy(this)">➤ এবার নিচের Script টি সেই nano ফাইলে paste করুন:</div>
+
+<div class="command" onclick="copy(this)">
+#!/bin/bash <br>
+while true; do <br>
+&nbsp;&nbsp;echo "🟢 Starting Aztec node..." <br>
+&nbsp;&nbsp;aztec start --node --archiver --sequencer \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--network alpha-testnet \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--l1-rpc-urls SEPOLIA_RPC \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--l1-consensus-host-urls BEACON_RPC \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--sequencer.validatorPrivateKey PRIVATE_KEY_WITH_0X \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--sequencer.coinbase EVM_ADDRESS \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--p2p.p2pIp VPS_IP \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--p2p.maxTxPoolSize 1000000000 <br><br>
+&nbsp;&nbsp;echo "🔴 Aztec node crashed. Restarting in 5 seconds..." <br>
+&nbsp;&nbsp;sleep 5 <br>
+done
+</div>
+
+<div class="command" onclick="copy(this)">➤ এবার নিচের কমান্ড দিন — আপনার আগের config/data file থেকে code copy করে এখানে বসান:</div>
+<div class="command" onclick="copy(this)">ADDED DATA FROM: আপনার সেই save করা ফাইলের content এখানে বসান</div>
+
+<div class="command" onclick="copy(this)">➤ ফাইলটি executable করুন: chmod +x restart-aztec.sh</div>
+
+<div class="command" onclick="copy(this)">➤ ফাইল রান করুন: ./restart-aztec.sh</div>
+
+
+
+
+
+
 
 
 
