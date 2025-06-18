@@ -462,32 +462,7 @@ ommand" onclick="copyText(this)">cloudflared tunnel --url http://localhost:3000<
 
 
 
-<h3>📌 Step 1: Aztec node বন্ধ করুন</h3>
-<p>CTRL + C চাপুন — আগের process বন্ধ করতে</p>
-<div class="command" onclick="copy(this)">CTRL+C</div>
 
-<h3>📌 Step 2: নতুন ফাইল খুলুন</h3>
-<p>এই command দিয়ে নতুন ফাইল খুলুন:</p>
-<div class="command" onclick="copy(this)">nano restart-aztec.sh</div>
-
-<h3>📌 Step 3: নিচের script টি paste করুন</h3>
-<p>এই command গুলো copy করে nano-র ভিতরে paste করুন:</p>
-<div class="command" onclick="copy(this)">
-#!/bin/bash <br>
-while true; do <br>
-&nbsp;&nbsp;echo "🟢 Starting Aztec node..." <br>
-&nbsp;&nbsp;aztec start --node --archiver --sequencer \<br>
-&nbsp;&nbsp;&nbsp;&nbsp;--network alpha-testnet \<br>
-&nbsp;&nbsp;&nbsp;&nbsp;--l1-rpc-urls SEPOLIA_RPC \<br>
-&nbsp;&nbsp;&nbsp;&nbsp;--l1-consensus-host-urls BEACON_RPC \<br>
-&nbsp;&nbsp;&nbsp;&nbsp;--sequencer.validatorPrivateKey PRIVATE_KEY_WITH_0X \<br>
-&nbsp;&nbsp;&nbsp;&nbsp;--sequencer.coinbase EVM_ADDRESS \<br>
-&nbsp;&nbsp;&nbsp;&nbsp;--p2p.p2pIp VPS_IP \<br>
-&nbsp;&nbsp;&nbsp;&nbsp;--p2p.maxTxPoolSize 1000000000 <br><br>
-&nbsp;&nbsp;echo "🔴 Aztec node crashed. Restarting in 5 seconds..." <br>
-&nbsp;&nbsp;sleep 5 <br>
-done
-</div>
 
 
 
