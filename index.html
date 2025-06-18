@@ -367,6 +367,108 @@ ommand" onclick="copyText(this)">cloudflared tunnel --url http://localhost:3000<
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RPC Create - Click to Copy</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #00ffe0;
+      font-family: monospace;
+      padding: 30px;
+    }
+    h2 {
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+    .command {
+      background: #1e1e1e;
+      border-left: 5px solid #00ff99;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: pre-wrap;
+      transition: background 0.3s;
+      animation: blink 1.5s infinite;
+    }
+    .command:hover {
+      background: #2c2c2c;
+    }
+    @keyframes blink {
+      0% {border-left-color: #00ff99;}
+      50% {border-left-color: #ff00ff;}
+      100% {border-left-color: #00ff99;}
+    }
+    .copied {
+      color: lime;
+      margin-top: -10px;
+      margin-bottom: 15px;
+      display: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🚀 RPC Create - Click Any Command to Copy</h2>
+
+  <div class="command" onclick="copy(this)">sudo apt-get -qq update && sudo apt-get upgrade -y</div>
+  <div class="command" onclick="copy(this)">sudo apt -qq install curl -y</div>
+
+  <div class="command" onclick="copy(this)">curl -s https://raw.githubusercontent.com/codedialect/geth-prysm-rpc-node/main/setup_geth_prysm.sh  | sudo bash</div>
+
+  <div class="command" onclick="copy(this)">sudo ufw allow ssh</div>
+  <div class="command" onclick="copy(this)">sudo ufw allow 22</div>
+  <div class="command" onclick="copy(this)">sudo ufw allow 30303/tcp</div>
+  <div class="command" onclick="copy(this)">sudo ufw allow 30303/udp</div>
+  <div class="command" onclick="copy(this)">sudo ufw enable</div>
+
+  <div class="command" onclick="copy(this)">sudo ufw allow 8545/tcp</div>
+  <div class="command" onclick="copy(this)">sudo ufw allow 3500/tcp</div>
+  <div class="command" onclick="copy(this)">sudo ufw reload</div>
+
+  <hr style="margin: 30px 0; border-color: #444;" />
+
+  <h2>🕐 24hr later check commands</h2>
+
+  <div class="command" onclick="copy(this)">curl http://localhost:3500/eth/v1/node/syncing</div>
+
+  <div class="command" onclick="copy(this)">
+curl -X POST -H "Content-Type: application/json" \
+--data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}' \
+http://localhost:8545
+  </div>
+
+  <div class="copied" id="copiedMsg">✅ Copied to clipboard!</div>
+
+  <script>
+    function copy(el) {
+      const txt = el.textContent;
+      navigator.clipboard.writeText(txt).then(() => {
+        const msg = document.getElementById("copiedMsg");
+        msg.style.display = "block";
+        setTimeout(() => {
+          msg.style.display = "none";
+        }, 1500);
+      });
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
 
 
 
