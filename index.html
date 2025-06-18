@@ -370,69 +370,61 @@ ommand" onclick="copyText(this)">cloudflared tunnel --url http://localhost:3000<
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>RPC Create - Click to Copy</title>
+  <meta charset="UTF-8" />
+  <title>RPC CREAT LINK by Prodip</title>
   <style>
     body {
-      background-color: #121212;
-      color: #00ffe0;
+      background-color: #111;
       font-family: monospace;
+      color: #eee;
       padding: 30px;
     }
-    h2 {
-      color: #ffffff;
-      margin-bottom: 20px;
+
+    h1, h2, h3 {
+      color: #00ffaa;
+      text-align: center;
     }
+
     .command {
-      background: #1e1e1e;
-      border-left: 5px solid #00ff99;
-      padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 6px;
+      background-color: #222;
+      border-left: 5px solid #00ffaa;
+      padding: 10px;
+      margin: 10px 0;
       cursor: pointer;
-      white-space: pre-wrap;
-      transition: background 0.3s;
-      animation: blink 1.5s infinite;
+      transition: 0.3s;
     }
+
     .command:hover {
-      background: #2c2c2c;
+      background-color: #333;
     }
-    @keyframes blink {
-      0% {border-left-color: #00ff99;}
-      50% {border-left-color: #ff00ff;}
-      100% {border-left-color: #00ff99;}
+
+    .copied-command {
+      animation: multiColorBlink 1.5s infinite;
+      background-color: #222 !important;
+      border-left: 5px solid white;
+      color: white;
+      padding-left: 10px;
     }
-    .copied {
-      color: lime;
-      margin-top: -10px;
-      margin-bottom: 15px;
-      display: none;
-      font-weight: bold;
+
+    @keyframes multiColorBlink {
+      0%   { box-shadow: 0 0 10px red; background-color: red; }
+      25%  { box-shadow: 0 0 10px green; background-color: green; }
+      50%  { box-shadow: 0 0 10px yellow; background-color: yellow; color: black; }
+      75%  { box-shadow: 0 0 10px hotpink; background-color: hotpink; color: black; }
+      100% { box-shadow: 0 0 10px red; background-color: red; }
     }
   </style>
-</head><style>
-  .copied-command {
-    animation: copiedBlink 1.2s ease-in-out;
-    background-color: #003322 !important;
-    border-left: 4px solid lime !important;
-    color: #00ffcc !important;
-  }
-
-  @keyframes copiedBlink {
-    0%   { box-shadow: 0 0 4px lime; }
-    50%  { box-shadow: 0 0 12px lime; }
-    100% { box-shadow: 0 0 4px lime; }
-  }
-</style>
+</head>
 
 <body>
-
-  <h2>🚀 RPC Create - Click Any Command to Copy</h2>
+  <h1>🛠️ RPC CREAT LINK</h1>
 
   <div class="command" onclick="copy(this)">sudo apt-get -qq update && sudo apt-get upgrade -y</div>
   <div class="command" onclick="copy(this)">sudo apt -qq install curl -y</div>
 
-  <div class="command" onclick="copy(this)">curl -s https://raw.githubusercontent.com/codedialect/geth-prysm-rpc-node/main/setup_geth_prysm.sh  | sudo bash</div>
+  <div class="command" onclick="copy(this)">
+    curl -s https://raw.githubusercontent.com/codedialect/geth-prysm-rpc-node/main/setup_geth_prysm.sh  | sudo bash
+  </div>
 
   <div class="command" onclick="copy(this)">sudo ufw allow ssh</div>
   <div class="command" onclick="copy(this)">sudo ufw allow 22</div>
@@ -444,36 +436,27 @@ ommand" onclick="copyText(this)">cloudflared tunnel --url http://localhost:3000<
   <div class="command" onclick="copy(this)">sudo ufw allow 3500/tcp</div>
   <div class="command" onclick="copy(this)">sudo ufw reload</div>
 
-  <hr style="margin: 30px 0; border-color: #444;" />
-
-  <h2>🕐 24hr later check commands</h2>
+  <h3>⏱️ 24 hr পর চেক করার কমান্ড</h3>
 
   <div class="command" onclick="copy(this)">curl http://localhost:3500/eth/v1/node/syncing</div>
 
   <div class="command" onclick="copy(this)">
-curl -X POST -H "Content-Type: application/json" \
---data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}' \
-http://localhost:8545
+    curl -X POST -H "Content-Type: application/json" \<br>
+    --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}' \<br>
+    http://localhost:8545
   </div>
-
-  <div class="copied" id="copiedMsg">✅ Copied to clipboard!</div>
 
   <script>
     function copy(el) {
-      const txt = el.textContent;
-      navigator.clipboard.writeText(txt).then(() => {
-        const msg = document.getElementById("copiedMsg");
-        msg.style.display = "block";
-        setTimeout(() => {
-          msg.style.display = "none";
-        }, 1500);
+      const text = el.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        document.querySelectorAll('.command').forEach(div => div.classList.remove('copied-command'));
+        el.classList.add('copied-command');
       });
     }
   </script>
-
 </body>
 </html>
-
 
 
 
