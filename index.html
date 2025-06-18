@@ -410,7 +410,21 @@ ommand" onclick="copyText(this)">cloudflared tunnel --url http://localhost:3000<
       font-weight: bold;
     }
   </style>
-</head>
+</head><style>
+  .copied-command {
+    animation: copiedBlink 1.2s ease-in-out;
+    background-color: #003322 !important;
+    border-left: 4px solid lime !important;
+    color: #00ffcc !important;
+  }
+
+  @keyframes copiedBlink {
+    0%   { box-shadow: 0 0 4px lime; }
+    50%  { box-shadow: 0 0 12px lime; }
+    100% { box-shadow: 0 0 4px lime; }
+  }
+</style>
+
 <body>
 
   <h2>🚀 RPC Create - Click Any Command to Copy</h2>
