@@ -463,6 +463,86 @@ ommand" onclick="copyText(this)">cloudflared tunnel --url http://localhost:3000<
 
 
 
+<h2>🔧 AZTEC CRASH FIXED BY PRODIP <span style="color: red; font-weight: bold;">NEW</span></h2>
+
+<!-- Audio sound for click -->
+<audio id="clickSound" src="prodip.wav" preload="auto"></audio>
+
+<ol>
+  <li><div class="command" onclick="copy(this)">nano restart-aztec.sh</div></li>
+  <li>
+    <div class="command" onclick="copy(this)">
+#!/bin/bash<br>
+while true; do<br>
+&nbsp;&nbsp;echo "🟢 Starting Aztec node..."<br>
+&nbsp;&nbsp;aztec start --node --archiver --sequencer \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--network alpha-testnet \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--l1-rpc-urls SEPOLIA_RPC \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--l1-consensus-host-urls BEACON_RPC \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--sequencer.validatorPrivateKey PRIVATE_KEY_WITH_0X \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--sequencer.coinbase EVM_ADDRESS \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--p2p.p2pIp VPS_IP \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--p2p.maxTxPoolSize 1000000000<br><br>
+&nbsp;&nbsp;echo "🔴 Aztec node crashed. Restarting in 5 seconds..."<br>
+&nbsp;&nbsp;sleep 5<br>
+done
+    </div>
+  </li>
+  <li><div class="command" onclick="copy(this)">chmod +x restart-aztec.sh</div></li>
+  <li><div class="command" onclick="copy(this)">./restart-aztec.sh</div></li>
+</ol>
+
+<!-- CSS for styling and blinking -->
+<style>
+  .command {
+    background-color: #222;
+    border-left: 5px solid #00ffaa;
+    padding: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: monospace;
+    white-space: pre-wrap;
+    color: #fff;
+  }
+
+  .command:hover {
+    background-color: #333;
+  }
+
+  .copied-command {
+    animation: multiColorBlink 1s infinite;
+    background-color: #111 !important;
+    border-left: 5px solid white;
+  }
+
+  @keyframes multiColorBlink {
+    0% { box-shadow: 0 0 10px red; background-color: red; }
+    25% { box-shadow: 0 0 10px green; background-color: green; }
+    50% { box-shadow: 0 0 10px yellow; background-color: yellow; color: black; }
+    75% { box-shadow: 0 0 10px hotpink; background-color: hotpink; color: black; }
+    100% { box-shadow: 0 0 10px red; background-color: red; }
+  }
+</style>
+
+<!-- JavaScript for copy and sound -->
+<script>
+  function copy(el) {
+    const text = el.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      document.querySelectorAll('.command').forEach(div => div.classList.remove('copied-command'));
+      el.classList.add('copied-command');
+
+      // Play sound
+      const audio = document.getElementById("clickSound");
+      if (audio) {
+        audio.currentTime = 0;
+        audio.play();
+      }
+    });
+  }
+</script>
+
 
 
 
