@@ -551,12 +551,12 @@ done
 
 
 
-
 <hr>
 <div class="nexus-section">
   <h2 class="nexus-title" onclick="toggleNexus()">📁 NEXUS NODERUN</h2>
   <div class="nexus-commands" id="nexusBox" style="display:none;">
 
+    <!-- Commands 1 to 9 (same as before) -->
     <pre id="cmd1" onclick="copyCommand(1)">sudo apt update && sudo apt upgrade -y
 sudo apt install screen curl build-essential pkg-config libssl-dev git-all -y
 sudo apt install protobuf-compiler -y
@@ -581,15 +581,18 @@ sudo apt update</pre>
     <pre id="cmd7" onclick="copyCommand(7)">curl https://cli.nexus.xyz/ | sh</pre>
     <div id="copyMsg7" class="copy-msg">✅ 7 No. Command copied!</div>
 
-<pre id="cmd7" onclick="copyCommand(7)">source ~/.bashrc/ | sh</pre>
-    <div id="copyMsg7" class="copy-msg">✅ 8 No. Command copied!</div>
-    
-    <pre id="cmd8" onclick="copyCommand(8)">nexus-network start --node-id</pre>
-    <div id="copyMsg8" class="copy-msg">✅ 9 No. Command copied!</div>
+    <pre id="cmd8" onclick="copyCommand(8)">source ~/.bashrc</pre>
+    <div id="copyMsg8" class="copy-msg">✅ 8 No. Command copied!</div>
 
-    <pre id="cmd9" onclick="copyCommand(9)">
-extra</pre>
-    <div id="copyMsg9" class="copy-msg">✅ 10 No. Command copied!</div>
+    <pre id="cmd9" onclick="copyCommand(9)">nexus-network start --node-id</pre>
+    <div id="copyMsg9" class="copy-msg">✅ 9 No. Command copied!</div>
+
+    <!-- Web link (10 number) -->
+    <div style="margin-top: 25px;">
+      🌐 <a href="https://app.nexus.xyz/nodes" target="_blank" style="color:#4fc3f7;font-weight:bold;text-decoration:none;">
+        Visit Nexus Node App
+      </a>
+    </div>
 
   </div>
 </div>
@@ -629,11 +632,9 @@ extra</pre>
     margin-top: 5px;
     font-weight: bold;
   }
-
   .blink {
     animation: blinkColor 1s linear infinite alternate;
   }
-
   @keyframes blinkColor {
     0%   { color: #ff5252; background-color: #1e1e1e; }
     25%  { color: #448aff; background-color: #2e2e2e; }
@@ -665,30 +666,25 @@ sudo apt update`,
       5: `sudo apt install tmux`,
       6: `tmux new-session -s NEX`,
       7: `curl https://cli.nexus.xyz/ | sh`,
-      8: `nexus-network start --node-id`,
-      9: `https://app.nexus.xyz/nodes`,
+      8: `source ~/.bashrc`,
+      9: `nexus-network start --node-id`
     };
 
-    // Remove blink from all
     for (let i = 1; i <= 9; i++) {
       document.getElementById("cmd" + i).classList.remove("blink");
       document.getElementById("copyMsg" + i).style.display = "none";
     }
 
-    // Add blink only to selected
     document.getElementById("cmd" + number).classList.add("blink");
 
-    // Show copied message
     document.getElementById("copyMsg" + number).style.display = "block";
     setTimeout(() => {
       document.getElementById("copyMsg" + number).style.display = "none";
     }, 2000);
 
-    // Copy to clipboard
     navigator.clipboard.writeText(commands[number]);
   }
 </script>
-
 
 
 
