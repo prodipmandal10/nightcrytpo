@@ -553,6 +553,156 @@ done
 
 
 
+<hr>
+<div class="nexus-section">
+  <h2 class="nexus-title" onclick="toggleNexus()">📁 NEXUS NODERUN</h2>
+  <div class="nexus-commands" id="nexusBox" style="display:none;">
+  
+    <pre onclick="copyCommand(1)" class="blink1"><code>
+sudo apt update && sudo apt upgrade -y
+sudo apt install screen curl build-essential pkg-config libssl-dev git-all -y
+sudo apt install protobuf-compiler -y
+sudo apt update
+    </code></pre>
+    <div id="copyMsg1" class="copy-msg">✅ 1 No. Command copied!</div>
+
+    <pre onclick="copyCommand(2)" class="blink2"><code>
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    </code></pre>
+    <div id="copyMsg2" class="copy-msg">✅ 2 No. Command copied!</div>
+
+    <pre onclick="copyCommand(3)" class="blink3"><code>
+source $HOME/.cargo/env
+    </code></pre>
+    <div id="copyMsg3" class="copy-msg">✅ 3 No. Command copied!</div>
+
+    <pre onclick="copyCommand(4)" class="blink4"><code>
+rustup target add riscv32i-unknown-none-elf
+    </code></pre>
+    <div id="copyMsg4" class="copy-msg">✅ 4 No. Command copied!</div>
+
+    <pre onclick="copyCommand(5)" class="blink5"><code>
+sudo apt install tmux
+    </code></pre>
+    <div id="copyMsg5" class="copy-msg">✅ 5 No. Command copied!</div>
+
+    <pre onclick="copyCommand(6)" class="blink6"><code>
+tmux new-session -s NEX
+    </code></pre>
+    <div id="copyMsg6" class="copy-msg">✅ 6 No. Command copied!</div>
+
+    <pre onclick="copyCommand(7)" class="blink7"><code>
+curl https://cli.nexus.xyz/ | sh
+    </code></pre>
+    <div id="copyMsg7" class="copy-msg">✅ 7 No. Command copied!</div>
+
+    <pre onclick="copyCommand(8)" class="blink8"><code>
+nexus-network start --node-id
+    </code></pre>
+    <div id="copyMsg8" class="copy-msg">✅ 8 No. Command copied!</div>
+
+    <pre onclick="copyCommand(9)" class="blink9"><code>
+baki
+456
+extra
+    </code></pre>
+    <div id="copyMsg9" class="copy-msg">✅ 9 No. Command copied!</div>
+
+  </div>
+</div>
+
+<style>
+  .nexus-section {
+    margin-top: 40px;
+    padding: 20px;
+    background: #fff0f5;
+    border: 2px solid #f48fb1;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(255, 192, 203, 0.4);
+  }
+  .nexus-title {
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #d81b60;
+  }
+  .nexus-title:hover {
+    text-decoration: underline;
+  }
+  .nexus-commands pre {
+    background: #1e1e1e;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    user-select: none;
+    margin-top: 15px;
+    overflow-x: auto;
+  }
+  .copy-msg {
+    display: none;
+    margin-top: 5px;
+    font-weight: bold;
+  }
+
+  .blink1 { animation: blink1 1s linear infinite alternate; color: #ffeb3b; }
+  .blink2 { animation: blink2 1s linear infinite alternate; color: #81d4fa; }
+  .blink3 { animation: blink3 1s linear infinite alternate; color: #ce93d8; }
+  .blink4 { animation: blink4 1s linear infinite alternate; color: #a5d6a7; }
+  .blink5 { animation: blink5 1s linear infinite alternate; color: #ffd54f; }
+  .blink6 { animation: blink6 1s linear infinite alternate; color: #f8bbd0; }
+  .blink7 { animation: blink7 1s linear infinite alternate; color: #80cbc4; }
+  .blink8 { animation: blink8 1s linear infinite alternate; color: #f06292; }
+  .blink9 { animation: blink9 1s linear infinite alternate; color: #e1bee7; }
+
+  @keyframes blink1 { 0%{color:#ffeb3b} 100%{color:#f48fb1} }
+  @keyframes blink2 { 0%{color:#81d4fa} 100%{color:#ce93d8} }
+  @keyframes blink3 { 0%{color:#ce93d8} 100%{color:#b2dfdb} }
+  @keyframes blink4 { 0%{color:#a5d6a7} 100%{color:#ffcc80} }
+  @keyframes blink5 { 0%{color:#ffd54f} 100%{color:#ff8a65} }
+  @keyframes blink6 { 0%{color:#f8bbd0} 100%{color:#d1c4e9} }
+  @keyframes blink7 { 0%{color:#80cbc4} 100%{color:#aed581} }
+  @keyframes blink8 { 0%{color:#f06292} 100%{color:#ba68c8} }
+  @keyframes blink9 { 0%{color:#e1bee7} 100%{color:#fff176} }
+</style>
+
+<script>
+  function toggleNexus() {
+    document.getElementById("nexusBox").style.display = 
+      (document.getElementById("nexusBox").style.display === "none") ? "block" : "none";
+
+    for (let i = 1; i <= 9; i++) {
+      document.getElementById("copyMsg" + i).style.display = "none";
+    }
+  }
+
+  function copyCommand(number) {
+    const commands = {
+      1: `sudo apt update && sudo apt upgrade -y
+sudo apt install screen curl build-essential pkg-config libssl-dev git-all -y
+sudo apt install protobuf-compiler -y
+sudo apt update`,
+      2: `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`,
+      3: `source $HOME/.cargo/env`,
+      4: `rustup target add riscv32i-unknown-none-elf`,
+      5: `sudo apt install tmux`,
+      6: `tmux new-session -s NEX`,
+      7: `curl https://cli.nexus.xyz/ | sh`,
+      8: `nexus-network start --node-id`,
+      9: `baki\n456\nextra`
+    };
+
+    navigator.clipboard.writeText(commands[number]).then(() => {
+      for (let i = 1; i <= 9; i++) {
+        document.getElementById("copyMsg" + i).style.display = "none";
+      }
+      document.getElementById("copyMsg" + number).style.display = "block";
+      setTimeout(() => {
+        document.getElementById("copyMsg" + number).style.display = "none";
+      }, 2000);
+    });
+  }
+</script>
 
 
 
