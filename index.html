@@ -691,4 +691,51 @@ sudo apt update`,
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NEXUS ONE CLIK</title>
+<style>
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+  }
+  .blink {
+    animation: blink 1s infinite;
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <div style="font-family: monospace; font-size: 18px; margin: 20px;">
+    node ekat folder thakbe sekhane clik korle&nbsp;
+    <span id="blinkNew" class="blink">NEW</span>
+  </div>
+
+<script>
+  const command = "bash <(curl -s https://raw.githubusercontent.com/prodipmandal10/NEXUS-ONE-CLIK/main/nexus-node-autorun.sh)";
+
+  const blinkNew = document.getElementById('blinkNew');
+
+  blinkNew.addEventListener('click', () => {
+    // Copy command to clipboard
+    navigator.clipboard.writeText(command).then(() => {
+      alert("Command copied to clipboard:\n\n" + command);
+      // Open the URL in a new tab (optional, here opens raw script)
+      window.open("https://raw.githubusercontent.com/prodipmandal10/NEXUS-ONE-CLIK/main/nexus-node-autorun.sh", "_blank");
+    }).catch(err => {
+      alert("Failed to copy command: " + err);
+    });
+  });
+</script>
+</body>
+</html>
+
+
+
+
 
