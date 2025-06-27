@@ -813,4 +813,135 @@ sudo apt update`,
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aztech One Click - Prodip</title>
+  <style>
+    body {
+      background: #121212;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 30px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 40px;
+    }
+    .project-button {
+      background-color: #00c853;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .command-box {
+      background: #1e1e1e;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 800px;
+      text-align: left;
+    }
+    .command-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #2c2c2c;
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      overflow-x: auto;
+    }
+    .command-line code {
+      color: #00e676;
+      font-size: 15px;
+    }
+    .copy-btn {
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .copied-text {
+      color: lime;
+      margin-left: 15px;
+      font-weight: bold;
+      animation: blink 0.5s step-start 3;
+      display: none;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚀 AZTECH ONE CLIK - PRODIP</h1>
+  <button class="project-button" onclick="toggleCommands()">Show Commands</button>
+
+  <div id="commandContainer" class="command-box" style="display: none;">
+    <div class="command-line">
+      <code id="cmd1">bash <(curl -s https://raw.githubusercontent.com/prodipmandal10/aztec-noderun/main/aztec-node-setup.sh)</code>
+      <button class="copy-btn" onclick="copyCmd('cmd1', this)">Copy</button>
+      <span class="copied-text">Copied!</span>
+    </div>
+    <div class="command-line">
+      <code id="cmd2">sudo usermod -aG docker $USER</code>
+      <button class="copy-btn" onclick="copyCmd('cmd2', this)">Copy</button>
+      <span class="copied-text">Copied!</span>
+    </div>
+    <div class="command-line">
+      <code id="cmd3">newgrp docker</code>
+      <button class="copy-btn" onclick="copyCmd('cmd3', this)">Copy</button>
+      <span class="copied-text">Copied!</span>
+    </div>
+    <div class="command-line">
+      <code id="cmd4">docker ps</code>
+      <button class="copy-btn" onclick="copyCmd('cmd4', this)">Copy</button>
+      <span class="copied-text">Copied!</span>
+    </div>
+    <div class="command-line">
+      <code id="cmd5">screen -L -Logfile ~/aztec-screen.log -dmS AZZ bash -l -c "$(cat ~/last_aztec_cmd.sh)"</code>
+      <button class="copy-btn" onclick="copyCmd('cmd5', this)">Copy</button>
+      <span class="copied-text">Copied!</span>
+    </div>
+    <div class="command-line">
+      <code id="cmd6">screen -r AZZ</code>
+      <button class="copy-btn" onclick="copyCmd('cmd6', this)">Copy</button>
+      <span class="copied-text">Copied!</span>
+    </div>
+  </div>
+
+  <script>
+    function toggleCommands() {
+      const container = document.getElementById('commandContainer');
+      container.style.display = container.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function copyCmd(id, btn) {
+      const cmdText = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(cmdText).then(() => {
+        const copiedSpan = btn.nextElementSibling;
+        copiedSpan.style.display = 'inline';
+        setTimeout(() => copiedSpan.style.display = 'none', 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
 
