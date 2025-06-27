@@ -807,3 +807,129 @@ sudo apt update`,
 </html>
 
 
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NEXUS ONE CLIK PRODIP</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 30px;
+    background: #f9f9f9;
+  }
+
+  h1 {
+    cursor: pointer;
+    user-select: none;
+    color: #222;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  #commandContainer {
+    display: none;
+    font-family: monospace;
+    font-size: 1.1rem;
+    background: #222;
+    color: #eee;
+    padding: 15px 20px;
+    border-radius: 8px;
+    width: fit-content;
+    cursor: pointer;
+    position: relative;
+    user-select: all;
+  }
+
+  /* Blink animation */
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+  }
+
+  .blink {
+    animation: blink 1s infinite;
+  }
+
+  #copiedMsg {
+    position: absolute;
+    right: -90px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #4CAF50;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  #copiedMsg.show {
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+
+<h1 id="heading">AZTECH ONE CLIK PRODIP</h1>
+
+<div id="commandContainer" title="Click to copy the command">
+  bash <(curl -s https://raw.githubusercontent.com/prodipmandal10/aztec-noderun/main/aztec-node-setup.sh)
+  <span id="copiedMsg">Copied!</span>
+</div>
+
+<script>
+  const heading = document.getElementById('heading');
+  const commandContainer = document.getElementById('commandContainer');
+  const copiedMsg = document.getElementById('copiedMsg');
+
+  heading.addEventListener('click', () => {
+    if (commandContainer.style.display === 'none' || commandContainer.style.display === '') {
+      commandContainer.style.display = 'inline-block';
+      // Scroll to commandContainer for better UX
+      commandContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      commandContainer.style.display = 'none';
+    }
+  });
+
+  commandContainer.addEventListener('click', () => {
+    const commandText = commandContainer.textContent.replace('Copied!', '').trim();
+
+    // Copy to clipboard
+    navigator.clipboard.writeText(commandText).then(() => {
+      // Show copied message
+      copiedMsg.classList.add('show');
+
+      // Add blink effect
+      commandContainer.classList.add('blink');
+
+      // Hide message & remove blink after 2 seconds
+      setTimeout(() => {
+        copiedMsg.classList.remove('show');
+        commandContainer.classList.remove('blink');
+      }, 2000);
+    }).catch(err => {
+      alert('Failed to copy command: ' + err);
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
